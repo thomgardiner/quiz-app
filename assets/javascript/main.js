@@ -16,9 +16,39 @@ const questionBank = [
  image: "england.jpeg"
 },
 {question: "What is the capital of France?",
- options: [{id: 1, text: "Paris"}, {id: 2, text: "Los Angeles"}, {id: 3, text: "London"}, {id: 4, text: "Tokyo"}],
- answer: 1,
+ options: [{id: 1, text: "Tokyo"}, {id: 2, text: "Paris"}, {id: 3, text: "London"}, {id: 4, text: "Los Angeles"}],
+ answer: 2,
  image: "france.jpeg"
+},
+{question: "What is the capital of Italy?",
+ options: [{id: 1, text: "Beijing"}, {id: 2, text: "Rome"}, {id: 3, text: "Mexico City"}, {id: 4, text: "Tokyo"}],
+ answer: 2,
+ image: "italy.jpeg"
+},
+{question: "What is the capital of Russia?",
+ options: [{id: 1, text: "Beijing"}, {id: 2, text: "Rome"}, {id: 3, text: "Moscow"}, {id: 4, text: "New York City"}],
+ answer: 3,
+ image: "russia.jpeg"
+},
+{question: "What is the capital of Mexico?",
+ options: [{id: 1, text: "New York City"}, {id: 2, text: "Rome"}, {id: 3, text: "Moscow"}, {id: 4, text: "Mexico City"}],
+ answer: 4,
+ image: "mexico.jpeg"
+},
+{question: "What is the capital of Canada?",
+ options: [{id: 1, text: "London"}, {id: 2, text: "Ottawa"}, {id: 3, text: "Paris"}, {id: 4, text: "Seoul"}],
+ answer: 2,
+ image: "canada.jpeg"
+},
+{question: "What is the capital of China?",
+ options: [{id: 1, text: "Moscow"}, {id: 2, text: "Tokyo"}, {id: 3, text: "Lisbon"}, {id: 4, text: "Beijing"}],
+ answer: 4,
+ image: "china.jpeg"
+},
+{question: "What is the capital of Portugal?",
+ options: [{id: 1, text: "Moscow"}, {id: 2, text: "Tokyo"}, {id: 3, text: "Lisbon"}, {id: 4, text: "Beijing"}],
+ answer: 4,
+ image: "portugal.jpeg"
 }
 ];
 
