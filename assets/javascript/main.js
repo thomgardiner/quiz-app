@@ -26,7 +26,7 @@ const questionBank = [
 let score = 0;
 let possibleScore = questionBank.length;
 let currentQuestion = 0;
-let running = false;
+let running = true;
 
 //shuffle function
 const shuffle = function(array){
@@ -43,7 +43,7 @@ const gameOver = function(){
     
     let gameOver = $("<div>");
     gameOver.attr("id", "game-over-message");
-    gameOver.html("Click above to play again!");
+    gameOver.html("Click above or press a key to play again!");
     $("#question-area").append(gameOver);
     running = false;
 }
@@ -73,11 +73,7 @@ const generateQuestion = function(n){
 const checkAnswer = function(n){
     if(n == questionBank[currentQuestion].answer){
         score++;
-        console.log("correct");
         $('#score').html(score);
-    }
-    else{
-        console.log("wrong");
     }
 }
 
@@ -96,6 +92,38 @@ $(document).ready(function() {
 
 shuffle(questionBank);
 generateQuestion(currentQuestion);
+
+//keyboard logic
+
+$('body').keypress(function(event){
+    let pressed = event.key;
+    if(running == true){
+        if(pressed == '1'){
+            checkAnswer(1);
+            currentQuestion++;
+            generateQuestion(currentQuestion);
+        }
+        else if(pressed == '2'){
+            checkAnswer(2);
+            currentQuestion++;
+            generateQuestion(currentQuestion);
+        }
+        else if(pressed == '3'){
+            checkAnswer(3);
+            currentQuestion++;
+            generateQuestion(currentQuestion);
+        }
+        else if(pressed == '4'){
+            checkAnswer(4);
+            currentQuestion++;
+            generateQuestion(currentQuestion);
+        }
+    }
+    else{
+        reset();
+    }
+})
+
 
 //button logic
 
@@ -121,9 +149,16 @@ $('body').on("click", ".answer-button", function(){
         currentQuestion++;
         generateQuestion(currentQuestion);
     }
-
-
 })
+
+$('.answer-button').hover(function(){
+    let id = this.id;
+    $('#' + id).addClass("selected");
+}, function(){
+    let id = this.id;
+    $('#' + id).removeClass("selected");
+});
+
 
 //resets the quiz if game is over 
 
