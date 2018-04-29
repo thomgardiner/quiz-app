@@ -1,0 +1,29 @@
+#question-area{
+    width: 50%;
+    margin: auto;
+    min-height: 100px;
+
+}
+
+#question{
+    height: 100px;
+    width: 100%;
+    border-width: 1px;
+    border-style: solid;
+    background-color: grey;
+    text-align: center;
+    line-height: 80px;
+    font-size: 150%;
+}
+
+.answer-button{
+    margin-top: 10px;
+    text-align: center;
+    font-size: 130%;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.container{
+    width: 70%;
+}
