@@ -2,11 +2,10 @@
     width: 50%;
     margin: auto;
     min-height: 100px;
-
 }
 
 #question{
-    height: 100px;
+    min-height: 100px;
     width: 100%;
     border-width: 1px;
     border-style: solid;
@@ -26,4 +25,11 @@
 
 .container{
     width: 70%;
+}
+
+#score-display{
+    min-width: 100px;
+    width:200px;
+    margin:auto;
+    text-align: center;
 }
