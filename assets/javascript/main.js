@@ -1,22 +1,28 @@
+//questions
 const questionBank = [
 {question: "What is the capital of Colorado?",
  options: [{id: 1, text: "Denver"}, {id: 2, text: "Boulder"}, {id: 3, text: "Texas"}, {id: 4, text: "Longmont"}],
- answer: 1
+ answer: 1,
+ image: "colorado.jpeg"
 },
 {question: "What is the capital of Japan?",
  options: [{id: 1, text: "Kyoto"}, {id: 2, text: "Tokyo"}, {id: 3, text: "China"}, {id: 4, text: "Seoul"}],
- answer: 2
+ answer: 2,
+ image: "japan.jpeg"
 },
 {question: "What is the capital of England?",
  options: [{id: 1, text: "Paris"}, {id: 2, text: "Los Angeles"}, {id: 3, text: "London"}, {id: 4, text: "Tokyo"}],
- answer: 3
+ answer: 3,
+ image: "england.jpeg"
 },
 {question: "What is the capital of France?",
  options: [{id: 1, text: "Paris"}, {id: 2, text: "Los Angeles"}, {id: 3, text: "London"}, {id: 4, text: "Tokyo"}],
- answer: 1
+ answer: 1,
+ image: "france.jpeg"
 }
 ];
 
+//variable declarations
 let score = 0;
 let possibleScore = questionBank.length;
 let currentQuestion = 0;
@@ -30,6 +36,7 @@ const shuffle = function(array){
     }
 }
 
+//game over function, clears the board and displays score
 const gameOver = function(){
     $('.answer-button').hide();
     $('#question').html("Your score was " + score + " out of " + possibleScore + " (" + (score / possibleScore * 100) + "%)");
@@ -41,11 +48,8 @@ const gameOver = function(){
     running = false;
 }
 
-const chooseAnswer = function(){
-    console.log(this.question.options.id);
-}
 
-
+//generates questions from the question bank
 const generateQuestion = function(n){
     let remainingQuestions = questionBank.length - currentQuestion;
     
@@ -62,10 +66,10 @@ const generateQuestion = function(n){
     else{
         gameOver();
     }
-
-
 }
 
+
+//confirms the answer matches up with the answer id
 const checkAnswer = function(n){
     if(n == questionBank[currentQuestion].answer){
         score++;
@@ -77,6 +81,7 @@ const checkAnswer = function(n){
     }
 }
 
+//reset everything
 const reset = function(){
     $("#game-over-message").remove();
     currentQuestion = 0;
@@ -91,6 +96,8 @@ $(document).ready(function() {
 
 shuffle(questionBank);
 generateQuestion(currentQuestion);
+
+//button logic
 
 $('body').on("click", ".answer-button", function(){
     if(this.id == "button1"){
@@ -118,12 +125,12 @@ $('body').on("click", ".answer-button", function(){
 
 })
 
+//resets the quiz if game is over 
+
 $('body').on("click", "#question-area", function(){
     if(running === false){
         reset();
     }
 })
-
-
 
 });

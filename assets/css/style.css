@@ -9,11 +9,14 @@
     width: 100%;
     border-width: 1px;
     border-style: solid;
-    background-color: grey;
+    border-radius: 10px;
+    background-color: rgb(117, 136, 148);
     text-align: center;
     line-height: 100px;
     font-size: 150%;
+    color: white;
 }
+
 
 .answer-button{
     margin-top: 10px;
@@ -21,6 +24,13 @@
     font-size: 130%;
     border-width: 1px;
     border-style: solid;
+    background-color: rgb(117, 136, 148);
+    color: white;
+    border-radius: 10px;
+}
+
+#answer-row-1{
+    margin-top: 10px;
 }
 
 .container{
@@ -39,6 +49,15 @@
 }
 
 #game-over-message{
-    margin: auto;
+    margin: 10px auto;
     text-align: center;
+    color: white;
+}
+
+html, body{
+    background-color: rgb(40, 83, 108);
+}
+
+#score-display{
+    color: white;
 }
