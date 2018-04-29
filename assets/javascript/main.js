@@ -18,7 +18,9 @@ const questionBank = [
 ];
 
 let score = 0;
+let possibleScore = questionBank.length;
 let currentQuestion = 0;
+let running = false;
 
 //shuffle function
 const shuffle = function(array){
@@ -29,7 +31,14 @@ const shuffle = function(array){
 }
 
 const gameOver = function(){
-    console.log("game over");
+    $('.answer-button').hide();
+    $('#question').html("Your score was " + score + " out of " + possibleScore + " (" + (score / possibleScore * 100) + "%)");
+    
+    let gameOver = $("<div>");
+    gameOver.attr("id", "game-over-message");
+    gameOver.html("Click above to play again!");
+    $("#question-area").append(gameOver);
+    running = false;
 }
 
 const chooseAnswer = function(){
@@ -68,6 +77,16 @@ const checkAnswer = function(n){
     }
 }
 
+const reset = function(){
+    $("#game-over-message").remove();
+    currentQuestion = 0;
+    score = 0;
+    $('#score').html(score);
+    generateQuestion(currentQuestion);
+    $(".answer-button").show();
+    running = true;
+}
+
 $(document).ready(function() {
 
 shuffle(questionBank);
@@ -97,6 +116,12 @@ $('body').on("click", ".answer-button", function(){
     }
 
 
+})
+
+$('body').on("click", "#question-area", function(){
+    if(running === false){
+        reset();
+    }
 })
 
 

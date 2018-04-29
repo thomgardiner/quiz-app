@@ -11,7 +11,7 @@
     border-style: solid;
     background-color: grey;
     text-align: center;
-    line-height: 80px;
+    line-height: 100px;
     font-size: 150%;
 }
 
@@ -31,5 +31,14 @@
     min-width: 100px;
     width:200px;
     margin:auto;
+    text-align: center;
+}
+
+#button2, #button4{
+    margin-left: 5px;
+}
+
+#game-over-message{
+    margin: auto;
     text-align: center;
 }
