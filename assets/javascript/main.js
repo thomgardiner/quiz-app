@@ -49,7 +49,7 @@ let currentQuestion = 0;
 let running = true;
 let selectable = true;
 let time = 10;
-var timerID = null;
+let timerID = null;
 
 //shuffle function
 const shuffle = function(array){
@@ -130,6 +130,7 @@ const removeHighlight = function(n){
 
 }
 
+//timer function
 const timeKeeper = function(){
     if(running == true){
     timerID = setInterval(function(){
@@ -140,18 +141,18 @@ const timeKeeper = function(){
         else{
             currentQuestion++;
             generateQuestion(currentQuestion);
-        }
-        console.log(time);}, 1000);
+        };}, 1000);
     }
 }
 
+//stop timer
 const stopTimer = function(timer){
     clearInterval(timer);
-    timer = null;
 }
 
 $(document).ready(function() {
 
+//shuffles and generates a question
 shuffle(questionBank);
 generateQuestion(currentQuestion);
 timeKeeper();

@@ -78,3 +78,19 @@ html, body{
 .highlight-green{
     background-color:  rgba(40, 180, 52, 0.75);
 }
+
+#score-display{
+    font-weight: bold;
+}
+
+#score{
+    font-weight: normal;
+}
+
+#questions-left{
+    font-weight: normal;
+}
+
+#time-count{
+    font-weight: normal;
+}
