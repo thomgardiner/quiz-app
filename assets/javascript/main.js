@@ -47,6 +47,7 @@ let score = 0;
 let possibleScore = questionBank.length;
 let currentQuestion = 0;
 let running = true;
+let selectable = true;
 
 //shuffle function
 const shuffle = function(array){
@@ -83,6 +84,7 @@ const generateQuestion = function(n){
     else{
         gameOver();
     }
+    selectable = true;
 }
 
 
@@ -105,35 +107,78 @@ const reset = function(){
     running = true;
 }
 
+
+const highlight = function(n){
+    let userinput = n;
+    let correct = questionBank[currentQuestion].answer;
+    if(userinput !== correct){
+    $("#button" + n).addClass("highlight-red");
+    }
+    $("#button" + correct).addClass("highlight-green");
+}
+
+const removeHighlight = function(n){
+    let userinput = n;
+    let correct = questionBank[currentQuestion-1].answer;
+    $("#button" + n).removeClass("highlight-red");
+    $("#button" + correct).removeClass("highlight-green");
+
+}
+
+
+
 $(document).ready(function() {
 
 shuffle(questionBank);
 generateQuestion(currentQuestion);
 
+// while(running == true){
+//     currentQuestion++
+//     setInterval(generateQuestion(currentQuestion), 1000);
+
+// }
+
+
 //keyboard logic
 
 $('body').keypress(function(event){
     let pressed = event.key;
-    if(running == true){
-        if(pressed == '1'){
+    if(running == true && selectable == true){
+        if(pressed === '1'){
+            selectable = false;
             checkAnswer(1);
+            highlight(1);
             currentQuestion++;
-            generateQuestion(currentQuestion);
+            setTimeout(function(){ removeHighlight(1); }, 2000);
+            setTimeout(function(){ generateQuestion(currentQuestion); }, 2000);
+            //generateQuestion(currentQuestion);
         }
         else if(pressed == '2'){
+            selectable = false;
             checkAnswer(2);
+            highlight(2);
             currentQuestion++;
-            generateQuestion(currentQuestion);
+            setTimeout(function(){ removeHighlight(2); }, 2000);
+            setTimeout(function(){ generateQuestion(currentQuestion); }, 2000);
+            //generateQuestion(currentQuestion);
         }
         else if(pressed == '3'){
+            selectable = false;
             checkAnswer(3);
+            highlight(3);
             currentQuestion++;
-            generateQuestion(currentQuestion);
+            setTimeout(function(){ removeHighlight(3); }, 2000);
+            setTimeout(function(){ generateQuestion(currentQuestion); }, 2000);
+           // generateQuestion(currentQuestion);
         }
         else if(pressed == '4'){
+            selectable = false;
             checkAnswer(4);
+            highlight(4);
             currentQuestion++;
-            generateQuestion(currentQuestion);
+            setTimeout(function(){ removeHighlight(4); }, 2000);
+            setTimeout(function(){ generateQuestion(currentQuestion); }, 2000);
+           // generateQuestion(currentQuestion);
         }
     }
     else{
@@ -145,27 +190,48 @@ $('body').keypress(function(event){
 //button logic
 
 $('body').on("click", ".answer-button", function(){
+    if(running == true && selectable == true){
     if(this.id == "button1"){
+        selectable = false;
         checkAnswer(1);
+        highlight(1);
         currentQuestion++;
-        generateQuestion(currentQuestion);
+        //setTimeout(generateQuestion(currentQuestion), 3000);
+        setTimeout(function(){ removeHighlight(1); }, 2000);
+        setTimeout(function(){ generateQuestion(currentQuestion); }, 2000);
+        
 
     }
     else if(this.id == "button2"){
+        selectable = false;
         checkAnswer(2);
+        highlight(2);
         currentQuestion++;
-        generateQuestion(currentQuestion);
+        setTimeout(function(){ removeHighlight(2); }, 2000);
+        setTimeout(function(){ generateQuestion(currentQuestion); }, 2000);
+        //generateQuestion(currentQuestion);
     }
     else if(this.id == "button3"){
+        selectable = false;
         checkAnswer(3);
+        highlight(3);
         currentQuestion++;
-        generateQuestion(currentQuestion);
+        setTimeout(function(){ removeHighlight(3); }, 2000);
+        setTimeout(function(){ generateQuestion(currentQuestion); }, 2000);
+        //generateQuestion(currentQuestion);
+        
     }
     else if(this.id == "button4"){
+        selectable = false;
         checkAnswer(4);
+        highlight(4);
         currentQuestion++;
-        generateQuestion(currentQuestion);
+        setTimeout(function(){ removeHighlight(4); }, 2000);
+        setTimeout(function(){ generateQuestion(currentQuestion); }, 2000);
+        //generateQuestion(currentQuestion);
+        
     }
+}
 })
 
 //hover logic

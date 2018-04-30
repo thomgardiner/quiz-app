@@ -70,3 +70,11 @@ html, body{
 .selected{
     background-color: rgb(3, 44, 69);
 }
+
+.highlight-red{
+    background-color: rgba(214, 41, 41, 0.75);
+}
+
+.highlight-green{
+    background-color:  rgba(40, 180, 52, 0.75);
+}
