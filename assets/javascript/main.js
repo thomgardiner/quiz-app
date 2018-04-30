@@ -68,6 +68,7 @@ const gameOver = function(){
     gameOver.html("Click above or press a key to play again!");
     $("#question-area").append(gameOver);
     running = false;
+    stopTimer(timerID);
 }
 
 
