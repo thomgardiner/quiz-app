@@ -48,6 +48,8 @@ let possibleScore = questionBank.length;
 let currentQuestion = 0;
 let running = true;
 let selectable = true;
+let time = 10;
+var timerID = null;
 
 //shuffle function
 const shuffle = function(array){
@@ -85,6 +87,8 @@ const generateQuestion = function(n){
         gameOver();
     }
     selectable = true;
+    time = 10;
+    $("#time-count").text(time);
 }
 
 
@@ -125,59 +129,83 @@ const removeHighlight = function(n){
 
 }
 
+const timeKeeper = function(){
+    timerID = setInterval(function(){
+        if(time > 0){
+            time--;
+            $("#time-count").text(time);
+        }
+        else{
+            currentQuestion++;
+            generateQuestion(currentQuestion);
+        }
+        console.log(time);}, 1000);
+}
 
+const stopTimer = function(timer){
+    clearInterval(timer);
+    timer = null;
+}
+
+
+const cleanUp = function(){
+    
+
+}
 
 $(document).ready(function() {
 
 shuffle(questionBank);
 generateQuestion(currentQuestion);
-
-// while(running == true){
-//     currentQuestion++
-//     setInterval(generateQuestion(currentQuestion), 1000);
-
-// }
-
+timeKeeper();
 
 //keyboard logic
 
 $('body').keypress(function(event){
     let pressed = event.key;
-    if(running == true && selectable == true){
-        if(pressed === '1'){
+    if(running == true){
+        if(pressed === '1' && selectable === true){
             selectable = false;
+            stopTimer(timerID);
             checkAnswer(1);
             highlight(1);
             currentQuestion++;
             setTimeout(function(){ removeHighlight(1); }, 2000);
             setTimeout(function(){ generateQuestion(currentQuestion); }, 2000);
+            setTimeout(function(){ timeKeeper(); }, 2000);
             //generateQuestion(currentQuestion);
         }
-        else if(pressed == '2'){
+        else if(pressed == '2' && selectable === true){
             selectable = false;
+            stopTimer(timerID);
             checkAnswer(2);
             highlight(2);
             currentQuestion++;
             setTimeout(function(){ removeHighlight(2); }, 2000);
             setTimeout(function(){ generateQuestion(currentQuestion); }, 2000);
+            setTimeout(function(){ timeKeeper(); }, 2000);
             //generateQuestion(currentQuestion);
         }
-        else if(pressed == '3'){
+        else if(pressed == '3' && selectable === true){
             selectable = false;
+            stopTimer(timerID);
             checkAnswer(3);
             highlight(3);
             currentQuestion++;
             setTimeout(function(){ removeHighlight(3); }, 2000);
             setTimeout(function(){ generateQuestion(currentQuestion); }, 2000);
+            setTimeout(function(){ timeKeeper(); }, 2000);
            // generateQuestion(currentQuestion);
         }
-        else if(pressed == '4'){
+        else if(pressed == '4'  && selectable === true){
             selectable = false;
+            stopTimer(timerID);
             checkAnswer(4);
             highlight(4);
             currentQuestion++;
             setTimeout(function(){ removeHighlight(4); }, 2000);
             setTimeout(function(){ generateQuestion(currentQuestion); }, 2000);
+            setTimeout(function(){ timeKeeper(); }, 2000);
            // generateQuestion(currentQuestion);
         }
     }
@@ -193,6 +221,7 @@ $('body').on("click", ".answer-button", function(){
     if(running == true && selectable == true){
     if(this.id == "button1"){
         selectable = false;
+        stopTimer(timerID);
         checkAnswer(1);
         highlight(1);
         currentQuestion++;
@@ -204,30 +233,36 @@ $('body').on("click", ".answer-button", function(){
     }
     else if(this.id == "button2"){
         selectable = false;
+        stopTimer(timerID);
         checkAnswer(2);
         highlight(2);
         currentQuestion++;
         setTimeout(function(){ removeHighlight(2); }, 2000);
         setTimeout(function(){ generateQuestion(currentQuestion); }, 2000);
+        setTimeout(function(){ timeKeeper(); }, 2000);
         //generateQuestion(currentQuestion);
     }
     else if(this.id == "button3"){
         selectable = false;
+        stopTimer(timerID);
         checkAnswer(3);
         highlight(3);
         currentQuestion++;
         setTimeout(function(){ removeHighlight(3); }, 2000);
         setTimeout(function(){ generateQuestion(currentQuestion); }, 2000);
+        setTimeout(function(){ timeKeeper(); }, 2000);
         //generateQuestion(currentQuestion);
         
     }
     else if(this.id == "button4"){
         selectable = false;
+        stopTimer(timerID);
         checkAnswer(4);
         highlight(4);
         currentQuestion++;
         setTimeout(function(){ removeHighlight(4); }, 2000);
         setTimeout(function(){ generateQuestion(currentQuestion); }, 2000);
+        setTimeout(function(){ timeKeeper(); }, 2000);
         //generateQuestion(currentQuestion);
         
     }
