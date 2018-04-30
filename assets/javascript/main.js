@@ -109,6 +109,7 @@ const reset = function(){
     generateQuestion(currentQuestion);
     $(".answer-button").show();
     running = true;
+    timeKeeper();
 }
 
 
@@ -130,6 +131,7 @@ const removeHighlight = function(n){
 }
 
 const timeKeeper = function(){
+    if(running == true){
     timerID = setInterval(function(){
         if(time > 0){
             time--;
@@ -140,17 +142,12 @@ const timeKeeper = function(){
             generateQuestion(currentQuestion);
         }
         console.log(time);}, 1000);
+    }
 }
 
 const stopTimer = function(timer){
     clearInterval(timer);
     timer = null;
-}
-
-
-const cleanUp = function(){
-    
-
 }
 
 $(document).ready(function() {
@@ -170,10 +167,11 @@ $('body').keypress(function(event){
             checkAnswer(1);
             highlight(1);
             currentQuestion++;
-            setTimeout(function(){ removeHighlight(1); }, 2000);
-            setTimeout(function(){ generateQuestion(currentQuestion); }, 2000);
-            setTimeout(function(){ timeKeeper(); }, 2000);
-            //generateQuestion(currentQuestion);
+            setTimeout(function(){ 
+                removeHighlight(1);
+                generateQuestion(currentQuestion);
+                timeKeeper();
+            }, 2000);
         }
         else if(pressed == '2' && selectable === true){
             selectable = false;
@@ -181,10 +179,11 @@ $('body').keypress(function(event){
             checkAnswer(2);
             highlight(2);
             currentQuestion++;
-            setTimeout(function(){ removeHighlight(2); }, 2000);
-            setTimeout(function(){ generateQuestion(currentQuestion); }, 2000);
-            setTimeout(function(){ timeKeeper(); }, 2000);
-            //generateQuestion(currentQuestion);
+            setTimeout(function(){ 
+                removeHighlight(2);
+                generateQuestion(currentQuestion);
+                timeKeeper();
+            }, 2000);
         }
         else if(pressed == '3' && selectable === true){
             selectable = false;
@@ -192,10 +191,11 @@ $('body').keypress(function(event){
             checkAnswer(3);
             highlight(3);
             currentQuestion++;
-            setTimeout(function(){ removeHighlight(3); }, 2000);
-            setTimeout(function(){ generateQuestion(currentQuestion); }, 2000);
-            setTimeout(function(){ timeKeeper(); }, 2000);
-           // generateQuestion(currentQuestion);
+            setTimeout(function(){ 
+                removeHighlight(3);
+                generateQuestion(currentQuestion);
+                timeKeeper();
+            }, 2000);
         }
         else if(pressed == '4'  && selectable === true){
             selectable = false;
@@ -203,10 +203,11 @@ $('body').keypress(function(event){
             checkAnswer(4);
             highlight(4);
             currentQuestion++;
-            setTimeout(function(){ removeHighlight(4); }, 2000);
-            setTimeout(function(){ generateQuestion(currentQuestion); }, 2000);
-            setTimeout(function(){ timeKeeper(); }, 2000);
-           // generateQuestion(currentQuestion);
+            setTimeout(function(){ 
+                removeHighlight(4);
+                generateQuestion(currentQuestion);
+                timeKeeper();
+            }, 2000);
         }
     }
     else{
@@ -225,11 +226,11 @@ $('body').on("click", ".answer-button", function(){
         checkAnswer(1);
         highlight(1);
         currentQuestion++;
-        //setTimeout(generateQuestion(currentQuestion), 3000);
-        setTimeout(function(){ removeHighlight(1); }, 2000);
-        setTimeout(function(){ generateQuestion(currentQuestion); }, 2000);
-        
-
+        setTimeout(function(){ 
+            removeHighlight(1);
+            generateQuestion(currentQuestion);
+            timeKeeper();
+        }, 2000);
     }
     else if(this.id == "button2"){
         selectable = false;
@@ -237,10 +238,11 @@ $('body').on("click", ".answer-button", function(){
         checkAnswer(2);
         highlight(2);
         currentQuestion++;
-        setTimeout(function(){ removeHighlight(2); }, 2000);
-        setTimeout(function(){ generateQuestion(currentQuestion); }, 2000);
-        setTimeout(function(){ timeKeeper(); }, 2000);
-        //generateQuestion(currentQuestion);
+        setTimeout(function(){ 
+            removeHighlight(2);
+            generateQuestion(currentQuestion);
+            timeKeeper();
+        }, 2000);
     }
     else if(this.id == "button3"){
         selectable = false;
@@ -248,11 +250,11 @@ $('body').on("click", ".answer-button", function(){
         checkAnswer(3);
         highlight(3);
         currentQuestion++;
-        setTimeout(function(){ removeHighlight(3); }, 2000);
-        setTimeout(function(){ generateQuestion(currentQuestion); }, 2000);
-        setTimeout(function(){ timeKeeper(); }, 2000);
-        //generateQuestion(currentQuestion);
-        
+        setTimeout(function(){ 
+            removeHighlight(3);
+            generateQuestion(currentQuestion);
+            timeKeeper();
+        }, 2000); 
     }
     else if(this.id == "button4"){
         selectable = false;
@@ -260,11 +262,11 @@ $('body').on("click", ".answer-button", function(){
         checkAnswer(4);
         highlight(4);
         currentQuestion++;
-        setTimeout(function(){ removeHighlight(4); }, 2000);
-        setTimeout(function(){ generateQuestion(currentQuestion); }, 2000);
-        setTimeout(function(){ timeKeeper(); }, 2000);
-        //generateQuestion(currentQuestion);
-        
+        setTimeout(function(){ 
+            removeHighlight(4);
+            generateQuestion(currentQuestion);
+            timeKeeper();
+        }, 2000);    
     }
 }
 })
@@ -287,5 +289,4 @@ $('body').on("click", "#question-area", function(){
         reset();
     }
 })
-
 });
