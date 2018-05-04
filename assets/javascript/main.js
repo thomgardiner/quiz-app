@@ -66,6 +66,7 @@ const gameOver = function(){
     let gameOver = $("<div>");
     gameOver.attr("id", "game-over-message");
     gameOver.html("Click above or press a key to play again!");
+    $("#question-area").addClass("pointer");
     $("#question-area").append(gameOver);
     running = false;
     stopTimer(timerID);
@@ -111,6 +112,7 @@ const reset = function(){
     $('#buffer-div').remove();
     $('#score-display').show();
     $(".answer-button").show();
+    $("#question-area").removeClass("pointer");
     running = true;
     timeKeeper();
 }
@@ -160,6 +162,7 @@ const generateBoard = function(){
     let newgame = $("<div>");
     newgame.attr("id", "start-game-message");
     $('#question').html("Click to start!");
+    $("#question-area").addClass("pointer");
 }
 
 //creates a blank div for styling on start up

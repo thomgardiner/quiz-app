@@ -23,6 +23,10 @@
     height: 58px;
 }
 
+.pointer{
+    cursor: pointer;
+}
+
 .answer-button{
     margin-top: 10px;
     text-align: center;
@@ -33,6 +37,7 @@
     color: white;
     border-radius: 10px;
     box-shadow: 5px 5px 33px -8px rgb(54, 54, 54);
+    cursor: pointer;
 }
 
 #answer-row-1{
