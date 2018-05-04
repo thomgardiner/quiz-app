@@ -46,7 +46,7 @@ const questionBank = [
 let score = 0;
 let possibleScore = questionBank.length;
 let currentQuestion = 0;
-let running = true;
+let running = false;
 let selectable = true;
 let time = 10;
 let timerID = null;
@@ -108,6 +108,8 @@ const reset = function(){
     score = 0;
     $('#score').html(score);
     generateQuestion(currentQuestion);
+    $('#buffer-div').remove();
+    $('#score-display').show();
     $(".answer-button").show();
     running = true;
     timeKeeper();
@@ -151,12 +153,27 @@ const stopTimer = function(timer){
     clearInterval(timer);
 }
 
+const generateBoard = function(){
+    $('.answer-button').hide();
+    $('#score-display').hide();
+    createBuffer();
+    let newgame = $("<div>");
+    newgame.attr("id", "start-game-message");
+    $('#question').html("Click to start!");
+}
+
+//creates a blank div for styling on start up
+const createBuffer = function(){
+    let buffer = $("<div>");
+    buffer.attr("id", "buffer-div");
+    $("#score-display-wrapper").append(buffer);
+}
 $(document).ready(function() {
+
 
 //shuffles and generates a question
 shuffle(questionBank);
-generateQuestion(currentQuestion);
-timeKeeper();
+generateBoard();
 
 //keyboard logic
 
@@ -284,7 +301,7 @@ $('.answer-button').hover(function(){
 });
 
 
-//reset logic
+//reset / start logic
 
 $('body').on("click", "#question-area", function(){
     if(running == false){

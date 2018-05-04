@@ -19,6 +19,9 @@
     box-shadow: 6px 5px 33px -8px rgb(54, 54, 54);
 }
 
+#buffer-div{
+    height: 58px;
+}
 
 .answer-button{
     margin-top: 10px;
